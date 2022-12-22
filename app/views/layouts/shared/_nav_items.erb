@@ -1,0 +1,16 @@
+<div class="collapse navbar-collapse text-bg-dark" id="navbarNavDropdown">
+  <ul class="navbar-nav text-bg-dark">
+
+    <li class="nav-item">
+      <%= link_to 'Home', user_home_path, class: 'nav-link active text-bg-dark', 'aria-current': 'page' %>
+    </li>
+
+      <%= render "layouts/shared/admin_nav_links" %>
+      <%= render "layouts/shared/non_admin_nav_links" %>
+      <%= render "layouts/shared/owners_nav_links" %>
+      <%= render "layouts/shared/viewers_nav_links" %>
+
+    <li class="nav-item">
+    </li>
+  </ul>
+</div>

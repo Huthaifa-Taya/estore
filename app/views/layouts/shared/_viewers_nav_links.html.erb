@@ -1,0 +1,9 @@
+<% if customer_signed_in? or !user_signed_in? %>
+  <li class="nav-item">
+    <%= link_to 'Stores', stores_path, class: 'nav-link text-bg-dark' %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to 'Products', products_path, class: 'nav-link text-bg-dark' %>
+  </li>
+<% end %>

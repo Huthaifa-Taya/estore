@@ -1,109 +1,13 @@
 <nav class="navbar navbar-expand-lg bg-dark bg-dark">
   <div class="container-fluid text-bg-dark">
     <%= link_to admin_signed_in? ? 'Hi ' + current_user.name : 'E Store', user_home_path, class: "navbar-brand text-bg-dark" %>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon text-bg-dark"></span>
     </button>
-    <div class="collapse navbar-collapse text-bg-dark" id="navbarNavDropdown">
-      <ul class="navbar-nav text-bg-dark">
-<!--        # **********************************************************-->
-<!--        # nav item-->
-<!--        # **********************************************************-->
 
-        <li class="nav-item">
-          <%= link_to 'Home', user_home_path, class: 'nav-link active text-bg-dark', 'aria-current': 'page' %>
-        </li>
+    <%= render "layouts/shared/nav_items" %>
+    <%= render "layouts/shared/nav_user_actions" %>
 
-        <% if admin_signed_in? %>
-          <li class="nav-item dropdown text-bg-dark">
-            <div data-bs-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle text-bg-dark">Categoriess</div>
-            <ul class="dropdown-menu">
-              <%= link_to 'Show all categories', categories_path, class: 'dropdown-item text-bg-dark' %>
-              <% if admin_signed_in? %>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <%= link_to '+ New category', new_category_path, class: 'dropdown-item text-bg-dark' %>
-              <% end %>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown text-bg-dark">
-            <div data-bs-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle text-bg-dark">Users</div>
-            <ul class="dropdown-menu">
-              <%= link_to 'Show all users', admin_users_path(1), class: 'dropdown-item text-bg-dark' %>
-              <% if admin_signed_in? %>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <%= link_to '+ New user', admin_users_new_path(1), class: 'dropdown-item text-bg-dark' %>
-              <% end %>
-            </ul>
-          </li>
-
-        <% else %>
-
-          <li class="nav-item">
-            <%= link_to 'Categories', categories_path, class: 'nav-link text-bg-dark' %>
-          </li>
-          <% end %>
-
-        <% if admin_signed_in? or owner_signed_in? %>
-          <li class="nav-item dropdown text-bg-dark">
-            <div data-bs-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle text-bg-dark">Stores</div>
-            <ul class="dropdown-menu">
-              <%= link_to 'Show all stores', stores_path, class: 'dropdown-item text-bg-dark' %>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <%= link_to '+ New store', new_store_path, class: 'dropdown-item text-bg-dark' %>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown text-bg-dark">
-            <div data-bs-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle text-bg-dark">Products</div>
-            <ul class="dropdown-menu">
-              <%= link_to 'Show all products', products_path, class: 'dropdown-item text-bg-dark' %>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <%= link_to '+ New product', new_product_path, class: 'dropdown-item text-bg-dark' %>
-            </ul>
-          </li>
-      <% end %>
-
-        <% if customer_signed_in? or !user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to 'Products', products_path, class: 'nav-link text-bg-dark' %>
-          </li>
-
-          <li class="nav-item">
-            <%= link_to 'Stores', stores_path, class: 'nav-link text-bg-dark' %>
-          </li>
-        <% end %>
-
-
-
-<!--        # **********************************************************-->
-<!--        # nav item-->
-<!--        # **********************************************************-->
-        <li class="nav-item">
-        </li>
-      </ul>
-    </div>
-    <div class="pe-3">
-      <% if customer_signed_in? or !user_signed_in? %>
-        <%= link_to 'Cart', cart_path, class: 'nav-link' %>
-      <% end %>
-    </div>
-    <div class="pe-3">
-
-      <% if user_signed_in? %>
-        <%= link_to 'Sign out', destroy_user_session_path, data: { "turbo-method": :delete, 'turbo-confirm': "Are you sure?" }, class: 'nav-link' %>
-      <% else %>
-        <%= link_to 'Sign in', new_user_session_path,
-                    class: 'nav-link' %>
-      <% end %>
-    </div>
   </div>
 </nav>
