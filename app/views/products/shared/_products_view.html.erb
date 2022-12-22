@@ -1,6 +1,5 @@
-<% stylesheet_link_tag 'grid.generic' %>
-<% stylesheet_link_tag 'product.generic' %>
-
+<%= stylesheet_link_tag "grid", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "product", "data-turbo-track": "reload" %>
 <% if locals[:products] %>
   <% if customer_signed_in? or !user_signed_in? and @filters %>
     <div class="products-filters">

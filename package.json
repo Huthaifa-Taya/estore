@@ -1,0 +1,23 @@
+{
+  "name": "estore",
+  "dependencies": {
+    "@hotwired/stimulus": "^3.2.1",
+    "@hotwired/turbo-rails": "^7.2.4",
+    "@popperjs/core": "^2.11.6",
+    "@rails/actiontext": "^7.0.4",
+    "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.2",
+    "controllers": "^0.0.2",
+    "dropzone": "^6.0.0-beta.2",
+    "esbuild": "^0.16.10",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "sass": "^1.57.1",
+    "scss": "^0.2.4",
+    "trix": "^2.0.4"
+  },
+  "scripts": {
+    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+  }
+}

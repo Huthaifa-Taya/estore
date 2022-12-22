@@ -87,3 +87,11 @@ gem "turbolinks", "~> 5.2"
 gem "rails-ujs", "~> 0.1.0"
 
 gem "jquery-rails", "~> 4.5"
+
+gem "sass-rails", "~> 6.0"
+
+gem "sassc-rails", "~> 2.1"
+
+gem "cssbundling-rails", "~> 1.1"
+
+gem "jsbundling-rails", "~> 1.1"
