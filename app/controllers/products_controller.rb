@@ -75,10 +75,19 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(@id)
+    @categories = Category.all
+    @stores = Store.order(created_at: :desc)
   end
 
   def update
-    Product.find(@id).update!(@_params)
+    id = @_params.delete(:id).to_i
+    category_ids = @_params.delete(:categories)
+    category_ids.shift
+    product = Product.find(id)
+    category_ids.delete_if { |cat_id| product.categories.include?(cat_id.to_i) }
+    product.update!(@_params)
+    product.categories << category_ids.map { |cat_id| Category.find(cat_id.to_i)}
+    redirect_to product_path(id: id) and return
   end
 
   def destroy
@@ -98,7 +107,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    @_params = params.require(:product).permit(:name, :price, :stock_quantity, :store_id, :image, categories: [])
+    @_params = params.require(:product).permit(:id, :name, :price, :stock_quantity, :store_id, :image, categories: [])
   end
 
   def authenticate_admin_or_owner!

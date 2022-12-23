@@ -1,0 +1,9 @@
+<div class="products-filters">
+  <%= form_with scope: :filters, url: product_filter_path(1) do |form| %>
+    <div class="mb-3 cats-check-boxes">
+      <%= form.collection_radio_buttons :name, @filters, :name, :name %>
+    </div>
+    <%= form.text_field :search, placeholder: 'search', class: 'px-3 py-2' %>
+    <%= form.submit 'filter', class: 'inline btn btn-primary btn-color' %>
+  <% end %>
+</div>

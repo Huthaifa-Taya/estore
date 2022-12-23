@@ -41,7 +41,7 @@ class CartController < ApplicationController
         order.update!(total_price: total_price, purchase_date:Time.now)
     session[:cart] = []
 
-    redirect_to products_products_path(page: 1)
+    redirect_to products_path(page: 1)
   end
 
   def update

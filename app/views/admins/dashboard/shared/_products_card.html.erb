@@ -1,0 +1,18 @@
+<section class="col h-100">
+  <div class="card text-bg-dark mb-3">
+    <div class="card-header">products <span style="float: right">total products: <%= @monitor_data[:products][:total_count] %></span></div>
+    <div class="card-body">
+      <% @monitor_data[:products][:latest].each do |product| %>
+        <div class="card-text ms-2 m-3" style="letter-spacing: 1px;">
+          <%= product.name %>
+          <span style="float: right">store: <%= product.store.name %></span>
+        </div>
+      <% end %>
+    </div>
+    <div class="card-footer bg-light border-0">
+      <%= link_to 'Products', products_path, class: "btn btn-link btn-block" %>
+      <%= link_to 'import products', admin_import_products_path, class: "btn btn-link btn-block me-4" %>
+    </div>
+  </div>
+
+</section>

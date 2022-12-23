@@ -1,0 +1,14 @@
+<section class="col h-100">
+  <div class="card text-bg-dark mb-3">
+    <div class="card-header">Stores <span style="float: right">active stores: <%= @monitor_data[:stores][:total_count] %></span></div>
+    <div class="card-body">
+      <% @monitor_data[:stores][:latest].each do |store| %>
+        <div class="card-text ms-2 m-3" style="letter-spacing: 1px;"> <%= store.name %> </div>
+      <% end %>
+    </div>
+    <div class="card-footer bg-light border-0">
+      <%= link_to 'Stores', stores_path, class: "btn btn-link btn-block mx-auto" %>
+    </div>
+  </div>
+
+</section>
