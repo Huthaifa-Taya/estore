@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     get '/users/:id', as: 'user_edit', to: 'admins/userss#edit'
     patch '/users/:id', as: 'edit_user', to: 'admins/userss#update'
     delete '/:id', as: 'delete_user', to: 'admins/userss#destroy'
-    get 'import_products', as: 'import_products', to: 'admins/dashboard#import_products'
+    get 'import_products', as: 'import_products', to: 'admins/dashboard#import_products_view'
+    put 'import_products', as: 'import', to: 'admins/dashboard#import_products'
   end
 end

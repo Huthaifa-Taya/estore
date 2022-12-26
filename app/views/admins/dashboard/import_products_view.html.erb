@@ -1,0 +1,10 @@
+<%= stylesheet_link_tag "product", "data-turbo-track": "reload" %>
+<div class="container-sm">
+  <div class="container-sm">
+    <h1>Import Products</h1>
+    <%= form_with scope: :file, url: admin_import_path, method: :put do |form| %>
+    <%= form.file_field :file %>
+      <%= form.submit "import" %>
+    <% end %>
+  </div>
+</div>

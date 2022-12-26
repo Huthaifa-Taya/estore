@@ -10,7 +10,7 @@
     <%= render "layouts/shared/owners_nav_links" %>
     <% if admin_signed_in? %>
       <li class="nav-item">
-        <%= link_to 'import products', admin_import_products_path, class: "nav-link text-bg-dark" %>
+        <%= link_to 'import products', admin_import_products_path(current_user), class: "nav-link text-bg-dark" %>
       </li>
     <% end %>
     <%= render "layouts/shared/viewers_nav_links" %>

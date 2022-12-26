@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_15_125506) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_26_065929) do
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -105,6 +105,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_15_125506) do
     t.bigint "store_id", null: false
     t.string "image"
     t.bigint "user_id"
+    t.date "produced_at"
+    t.date "expires_at"
     t.index ["store_id"], name: "index_products_on_store_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
