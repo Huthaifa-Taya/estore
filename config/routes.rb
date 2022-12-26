@@ -7,13 +7,14 @@ Rails.application.routes.draw do
     delete '/', as: 'delete', to: 'stores#destroy'
   end
   resources :products do
-    get '/page/:page', as: 'products', to: 'products#index', on: :collection
-    get '/:id', as: 'product', to: 'products#show'
-    get '/new', as: 'create_new_product', to: 'products#create'
+    get '/page/:page', as: '', to: 'products#index', on: :collection, defaults: { page: 1 }
+    # get '/', as: 'show', to: 'products#show'
+    # get '/edit', as: 'edit', to: 'products#edit'
+    # get '/new', as: 'new', to: 'products#create'
     post '/filtered', as: 'filter', to: "products#filter"
-    post '/', as: 'new_product', to: 'products#create'
+    # post '/', as: 'create', to: 'products#create'
     # get '/filtered/page/:page', as: 'filtered', to: 'products#filtered', on: :collection
-    delete '/', as: 'delete', to: 'products#destroy'
+    # delete '/', as: 'delete', to: 'products#destroy'
   end
   resources :categories do
     get '/page/:page', as: 'categories', to: 'categories#index', on: :collection
@@ -43,12 +44,12 @@ Rails.application.routes.draw do
     get 'dashboard', as: 'dashboard', to: 'dashboard#index'
   end
 
-  resources :users do
-    get 'store_owners/page/:page', as: 'store_owners', to: 'users/users#index', on: :collection
-    get 'customers/page/:page', as: 'customers', to: "customers/customers#index", on: :collection
-    get '/page/:page', as: 'users', to: 'users/users#index', on: :collection
-    # get '/create', as: 'new' ,to: 'users/users#new'
-  end
+  # resources :users do
+  #   get 'store_owners/page/:page', as: 'store_owners', to: 'users/users#index', on: :collection
+  #   get 'customers/page/:page', as: 'customers', to: "customers/customers#index", on: :collection
+  #   get '/page/:page', as: 'users', to: 'users/users#index', on: :collection
+  #   # get '/create', as: 'new' ,to: 'users/users#new'
+  # end
 
   resources :admins do
     get 'dashboard', as: 'dashboard', to: "admins/dashboard#index"
@@ -58,5 +59,7 @@ Rails.application.routes.draw do
     get '/users/:id', as: 'user_edit', to: 'admins/userss#edit'
     patch '/users/:id', as: 'edit_user', to: 'admins/userss#update'
     delete '/:id', as: 'delete_user', to: 'admins/userss#destroy'
+    get 'import_products', as: 'import_products', to: 'admins/dashboard#import_products_view'
+    put 'import_products', as: 'import', to: 'admins/dashboard#import_products'
   end
 end

@@ -1,0 +1,24 @@
+<% if admin_signed_in? %>
+<li class="nav-item dropdown text-bg-dark">
+  <div data-bs-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle text-bg-dark">Users</div>
+  <ul class="dropdown-menu">
+    <%= link_to 'Show all users', admin_users_path(current_user), class: 'dropdown-item text-bg-dark' %>
+    <li>
+      <hr class="dropdown-divider">
+    </li>
+    <%= link_to '+ New user', admin_users_new_path(current_user), class: 'dropdown-item text-bg-dark' %>
+  </ul>
+</li>
+
+<li class="nav-item dropdown text-bg-dark">
+  <div data-bs-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle text-bg-dark">Categoriess</div>
+  <ul class="dropdown-menu">
+    <%= link_to 'Show all categories', categories_path, class: 'dropdown-item text-bg-dark' %>
+    <li>
+      <hr class="dropdown-divider">
+    </li>
+    <%= link_to '+ New category', new_category_path, class: 'dropdown-item text-bg-dark' %>
+  </ul>
+</li>
+
+<% end %>

@@ -1,0 +1,23 @@
+<% if admin_signed_in? or owner_signed_in? %>
+  <li class="nav-item dropdown text-bg-dark">
+    <div data-bs-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle text-bg-dark">Stores</div>
+    <ul class="dropdown-menu">
+      <%= link_to 'Show all stores', stores_path, class: 'dropdown-item text-bg-dark' %>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+      <%= link_to '+ New store', new_store_path, class: 'dropdown-item text-bg-dark' %>
+    </ul>
+  </li>
+
+  <li class="nav-item dropdown text-bg-dark">
+    <div data-bs-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle text-bg-dark">Products</div>
+    <ul class="dropdown-menu">
+      <%= link_to 'Show all products', products_path, class: 'dropdown-item text-bg-dark' %>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+      <%= link_to '+ New product', new_product_path, class: 'dropdown-item text-bg-dark' %>
+    </ul>
+  </li>
+<% end %>

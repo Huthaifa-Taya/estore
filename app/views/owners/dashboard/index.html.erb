@@ -4,16 +4,18 @@
   <% end %>
 <% end %>
 
-<table id="records-datatable" data-source="<%= owners_dashboard_path(format: :json) %>">
-  <thead>
-  <th>id</th>
-  <th>order id</th>
-  <th>user email</th>
-  <th>product</th>
-  <th>price</th>
-  <th>quantity</th>
-  </thead>
-</table>
+<div class="container-lg">
+  <table id="records-datatable" data-source="<%= owners_dashboard_path(format: :json) %>">
+    <thead>
+    <th>id</th>
+    <th>order id</th>
+    <th>user email</th>
+    <th>product</th>
+    <th>price</th>
+    <th>quantity</th>
+    </thead>
+  </table>
+</div>
 
 
 <script type="text/javascript">

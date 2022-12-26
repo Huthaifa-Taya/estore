@@ -1,17 +1,8 @@
-<% stylesheet_link_tag 'grid.generic' %>
-<% stylesheet_link_tag 'product.generic' %>
-
+<%= stylesheet_link_tag "grid", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "product", "data-turbo-track": "reload" %>
 <% if locals[:products] %>
   <% if customer_signed_in? or !user_signed_in? and @filters %>
-    <div class="products-filters">
-    <%= form_with scope: :filters, url: product_filter_path(1) do |form| %>
-      <div class="mb-3 cats-check-boxes">
-      <%= form.collection_radio_buttons :name, @filters, :name, :name %>
-      </div>
-        <%= form.text_field :search, placeholder: 'search', class: 'px-3 py-2' %>
-      <%= form.submit 'filter', class: 'inline btn btn-primary btn-color' %>
-    <% end %>
-    </div>
+    <%= render "products/shared/filters", filters: @filters %>
   <% end %>
   <div class="container-lg">
     <div class="row">
@@ -25,16 +16,10 @@
                 <% else %>
                   <%= link_to image_tag('no_image.jpg', style: 'height: 360px') %>
                 <% end %>
-                <!--            <a href="#" class="image">-->
-                <!--              <img class="pic-1" src="images/img-1.jpg">-->
-                <!--              <img class="pic-2" src="images/img-2.jpg">-->
-                <!--            </a>-->
                 <% if item.price > 200 %>
                   <span class="product-hot-label">best seller</span>
                 <% end %>
                 <ul class="product-links">
-                  <!--                <li><a href="#"><i class="far fa-heart"></i></a></li>-->
-                  <!--                <li><a href="#"><i class="fa fa-search"></i></a></li>-->
                   <li><% if item.image? %><%= link_to "", item.image, class: 'fa fa-search' %><% end %></li>
                 </ul>
               </div>
@@ -42,10 +27,6 @@
                 <ul class="rating">
                   <% (2..(rand(4..5))).each do |number| %>
                     <li class="fa fa-star"></li>
-                    <!--                <li class="fa fa-star"></li>-->
-                    <!--                <li class="fa fa-star"></li>-->
-                    <!--                <li class="far fa-star"></li>-->
-                    <!--                <li class="far fa-star"></li>-->
                   <% end %>
                   <li>(5)</li>
                 </ul>

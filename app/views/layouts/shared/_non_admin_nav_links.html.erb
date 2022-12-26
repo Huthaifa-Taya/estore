@@ -1,0 +1,5 @@
+<% unless admin_signed_in? %>
+  <li class="nav-item">
+    <%= link_to 'Categories', categories_path, class: 'nav-link text-bg-dark' %>
+  </li>
+<% end %>

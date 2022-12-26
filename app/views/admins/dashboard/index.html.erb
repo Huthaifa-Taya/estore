@@ -1,8 +1,16 @@
-<div class="container-sm">
-  <div class="d-flex flex-column justify-content-center align-items-center gap-5">
-    <%= link_to 'Stores', stores_path, class: "btn btn-link btn-block" %>
-    <%= link_to 'Products', products_path, class: "btn btn-link btn-block" %>
-    <%= link_to 'users', admin_users_path(admin_id: current_user.id), class: "btn btn-link btn-block" %>
-
+<%= stylesheet_link_tag "cart", "data-turbo-track": "reload" %>
+<div class="container-lg">
+  <div class="d-flex flex-column justify-content-center align-items-center gap-5 w-100 h-100">
+    <% if @monitor_data %>
+      <main class="w-100">
+        <div class="row row-cols-1 row-cols-md-2 g-4 w-100 h-50">
+        <%= render "admins/dashboard/shared/stores_card" %>
+        <%= render "admins/dashboard/shared/users_card" %>
+        </div>
+        <div class="row w-100 h-50">
+          <%= render "admins/dashboard/shared/products_card" %>
+        </div>
+      </main>
+    <% end %>
   </div>
 </div>

@@ -1,0 +1,38 @@
+<section class="col h-100">
+  <div class="card text-bg-dark mb-3">
+    <div class="card-header">Users <span style="float: right">online users: <%= @monitor_data[:users][:total_count] %></span></div>
+    <div class="card-body">
+      <div class="row w-100">
+        <div class="col">
+          <div class="card text-bg-dark mb-3">
+            <div class="card-header">
+              Customers <span style="float: right">online: <%= @monitor_data[:users][:customers][:total_count] %></span>
+            </div>
+            <div class="card-body">
+              <% @monitor_data[:users][:customers][:latest].each do |user| %>
+                <div class="card-text ms-2 m-3" style="letter-spacing: 1px;">  <%= user.email %></div>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-bg-dark mb-3">
+            <div class="card-header" >
+              Store owners <span style="float: right">online: <%= @monitor_data[:users][:owners][:total_count] %></span>
+            </div>
+            <div class="card-body">
+              <% @monitor_data[:users][:owners][:latest].each do |user| %>
+                <div class="card-text ms-2 m-3" style="letter-spacing: 1px;">  <%= user.email %></div>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer bg-light border-0">
+      <%= link_to 'users', admin_users_path(admin_id: current_user.id), class: "btn btn-link btn-block" %>
+    </div>
+  </div>
+</section>

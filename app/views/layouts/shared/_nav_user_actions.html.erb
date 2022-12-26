@@ -1,0 +1,14 @@
+<div class="pe-3">
+  <% if customer_signed_in? or !user_signed_in? %>
+    <%= link_to 'Cart', cart_path, class: 'nav-link' %>
+  <% end %>
+</div>
+<div class="pe-3">
+
+  <% if user_signed_in? %>
+    <%= link_to 'Sign out', destroy_user_session_path, data: { "turbo-method": :delete, 'turbo-confirm': "Are you sure?" }, class: 'nav-link' %>
+  <% else %>
+    <%= link_to 'Sign in', new_user_session_path,
+                class: 'nav-link' %>
+  <% end %>
+</div>

@@ -1,4 +1,4 @@
-<% stylesheet_link_tag 'product.generic' %>
+<% stylesheet_link_tag 'product' %>
 <div class="container-lg d-flex flex-row justify-content-center">
 
   <%= form_with(model: @product) do |form| %>
@@ -25,7 +25,7 @@
 
     <div class="mb-3">
       <%= form.label :price, 'Product price', style: 'display: block' %>
-      <%= form.number_field :price, class: 'form-control' %>
+      <%= form.number_field :price, step: :any, class: 'form-control' %>
     </div>
 
     <div class="mb-3">

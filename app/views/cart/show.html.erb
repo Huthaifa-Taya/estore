@@ -1,4 +1,4 @@
-<% stylesheet_link_tag "cart.generic" %>
+<%= stylesheet_link_tag "cart", "data-turbo-track": "reload" %>
 <div class="wrap cf">
   <h1 class="projTitle">Shopping Cart <span>items</span></h1>
   <div class="heading cf">
@@ -26,7 +26,7 @@
                 <h3><%= item[:product].name %></h3>
 
                 <p class="flex-paragraph" >
-                  <span >
+                  <span class="qtyChange">
                   <%= link_to image_tag('minus.png', style: 'width: 24px; height:24px;margin-top:auto;margin-bottom:auto;'), edit_quantity_path(item[:product], method: :sub), data: { "turbo-method": :patch }, class: 'minus' %>
 
                     <span class="qty">

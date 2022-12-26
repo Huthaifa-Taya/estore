@@ -1,2 +1,59 @@
-<h1>Products#edit</h1>
-<p>Find me in app/views/products/edit.html.erb</p>
+<% stylesheet_link_tag 'product' %>
+<div class="container-lg d-flex flex-row justify-content-center">
+
+  <%= form_with(model: @product, method: :put) do |form| %>
+    <h1 class="mb-4">Edit product: <%= @product.name %></h1>
+    <% if @product.errors.any? %>
+      <div style="color: red">
+        <h2>
+          <%= pluralize(@product.errors.count, 'error') %> prohibited this product from being saved:
+        </h2>
+        <ul>
+          <% @product.errors.each do |error| %>
+            <li>
+              <%= error.full_message %>
+            </li>
+            </ul>
+            </div>
+          <% end %>
+    <% end %>
+
+    <%= form.hidden_field :id %>
+
+    <div class="mb-3">
+      <%= form.label :name, 'Product name', style: 'display: block' %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :price, 'Product price', style: 'display: block' %>
+      <%= form.number_field :price, step: :any, class: 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :stock_quantity, style: 'display: block' %>
+      <%= form.number_field :stock_quantity, class: 'form-control' %>
+    </div>
+
+    <div class="mb-3 cats-check-boxes">
+      <%= form.collection_check_boxes :categories, @categories, :id, :name, {checked: @product.categories.map(&:to_param)} %>
+    </div>
+
+
+    <div class="mt-4">
+      <%= form.label :store_id, 'Viewing store', style: 'display: block' %>
+      <%= form.collection_select :store_id, @stores, :id, :name %>
+    </div>
+
+
+    <div class="form-group mt-4">
+      <%= form.label :image, 'Product image', style: 'display: block' %>
+      <%= form.file_field :image, class: "form-control-file" %>
+    </div>
+
+
+    <div>
+      <%= form.submit class: 'btn btn-primary mt-5 w-50 position-relative top-100 start-50 translate-middle' %>
+    </div>
+  <% end %>
+</div>
