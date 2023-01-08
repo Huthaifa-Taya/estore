@@ -24,7 +24,7 @@ module Admins
       file = params.require(:file).permit(:file)['file']
       save_csv_file(file)
       ImportProductsJob.perform_later(Rails.public_path.join('uploads', file.original_filename).to_s, Product)
-      redirect_to root_path, notice: 'Your request is being processed' and return
+      redirect_to admin_dashboard_path(current_user), notice: 'Your request is being processed' and return
     end
 
     private

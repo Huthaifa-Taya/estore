@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
   # Root path
   root to: "products#index"
   # Resources paths for stores, products, and categories.
