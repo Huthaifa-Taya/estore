@@ -48,7 +48,7 @@
         } else {
             document.querySelector('#file-import-container').style.display = 'initial';
             let progressDiv = document.querySelector("#job-progress");
-            let formatted_percentage = data.message + '%';
+            let formatted_percentage = data.message + (data.message === 'imported successfully' ? '': '%');
             progressDiv.innerHTML = formatted_percentage;
             progressDiv.style.width = formatted_percentage;
         }
