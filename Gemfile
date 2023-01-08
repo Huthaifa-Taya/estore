@@ -97,3 +97,7 @@ gem "cssbundling-rails", "~> 1.1"
 gem "jsbundling-rails", "~> 1.1"
 
 # gem 'paperclip', '~> 7.0'
+
+gem "activejob-status", "~> 0.4.0"
+
+gem "redis", "~> 5.0"
